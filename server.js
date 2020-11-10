@@ -15,14 +15,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+mongoose.connect(process.env.dblink || "mongodb://localhost/budget", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
 
-//app.get("/", (req, res) => {
-//  res.sendFile(path.join(__dirname, "public/index.html"));
-//});
 
 // routes
 app.use(require("./routes/api.js"));
